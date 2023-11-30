@@ -4,9 +4,9 @@
 
 This template is a clone of the project I put together after completing the course: [Curso de React.js con Vite.js y TailwindCSS](https://platzi.com/cursos/react-vite-tailwindcss/)".
 
-I followed the JpDiaz documentation from this project. Steps 1 to 12.
+I followed the *JpDiaz documentation* from this project. **Steps 1 to 12**.
 
-Learn more at: [eCommerce-react-vite-tailwind](https://docs.jpdiaz.dev/posts/ecommerce-react-vite-tailwind/)
+> Learn more at: [eCommerce-react-vite-tailwind](https://docs.jpdiaz.dev/posts/ecommerce-react-vite-tailwind/)
 
 <!-- ABOUT THE PROJECT -->
 
