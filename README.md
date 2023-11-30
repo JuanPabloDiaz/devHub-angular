@@ -1,8 +1,12 @@
 <div id="top"></div>
 
-# Curso de React.js con Vite.js y TailwindCSS
+# eCommerce Template with React + Vite + Tailwind CSS + REST API
 
-This repo contain all the info from the course I took in Platzi regarding how to create an E-commerce site using React.js, Vite.js and TailwindCSS . The course name is: "[Curso de React.js con Vite.js y TailwindCSS](https://platzi.com/cursos/react-vite-tailwindcss/)".
+This template is a clone of the project I put together after completing the course: [Curso de React.js con Vite.js y TailwindCSS](https://platzi.com/cursos/react-vite-tailwindcss/)".
+
+I followed the JpDiaz documentation from this project. Steps 1 to 12.
+
+Learn more at: [eCommerce-react-vite-tailwind](https://docs.jpdiaz.dev/posts/ecommerce-react-vite-tailwind/)
 
 <!-- ABOUT THE PROJECT -->
 
