@@ -1,0 +1,30 @@
+<div class="bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300 overflow-hidden h-full flex flex-col cursor-pointer" (click)="openResourceUrl()">
+  <div class="p-6 flex flex-col flex-grow">
+    <div class="flex justify-between items-start mb-3">
+      <h3 class="text-xl font-bold text-gray-900 truncate">{{ resource.name }}</h3>
+    </div>
+    
+    <p class="text-gray-600 text-sm mb-4 flex-grow line-clamp-3">{{ resource.description }}</p>
+    
+    <!-- Categories -->
+    <div class="mt-auto">
+      <div class="flex flex-wrap gap-2">
+        <span 
+          *ngFor="let category of resource.categories" 
+          class="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full"
+        >
+          {{ category }}
+        </span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="px-6 py-3 bg-gray-50 border-t border-gray-100">
+    <div class="flex items-center justify-between">
+      <span class="text-sm text-gray-500 truncate">{{ resource.url | slice:0:30 }}{{ resource.url.length > 30 ? '...' : '' }}</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+      </svg>
+    </div>
+  </div>
+</div>

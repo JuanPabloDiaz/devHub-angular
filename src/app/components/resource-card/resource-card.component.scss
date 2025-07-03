@@ -1,0 +1,12 @@
+/* Add any specific card styling here */
+:host {
+  display: block;
+}
+
+/* Add line-clamp utility since we're using Tailwind */
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
