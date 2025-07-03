@@ -12,7 +12,11 @@ export class ResourceService {
   private apiUrl = `${environment.apiUrl}/resources/`;
   private useSampleData = false; // Esta variable controla si se usan datos de ejemplo o no
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    console.log('🚀 ResourceService initialized');
+    console.log('🌍 Environment production:', environment.production);
+    console.log('🔗 API URL configured:', this.apiUrl);
+  }
 
   getResources(): Observable<ResourcesResponse> {
     // Si el usuario ha elegido explícitamente usar datos de ejemplo
