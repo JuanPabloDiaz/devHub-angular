@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Allow crawling of all content
+Disallow:
+
+# Sitemap location (update with your actual domain when deploying)
+# Sitemap: https://your-domain.com/sitemap.xml
+
+# Common crawl delays
+Crawl-delay: 1
