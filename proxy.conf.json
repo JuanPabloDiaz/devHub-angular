@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "https://dev-hub-geek.vercel.app",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

@@ -41,10 +41,65 @@
     <div class="loading-spinner"></div>
   </div>
 
-  <!-- Error state -->
-  <div *ngIf="error" class="error-message" role="alert">
-    <span>{{ error }}</span>
+  <!-- Error message -->
+  <div *ngIf="error" class="error-container">
+    <p class="error-message">{{ error }}</p>
+    <div class="error-actions">
+      <button class="retry-button" (click)="loadResources()">Reintentar conexión con API</button>
+      <button class="sample-button" (click)="loadSampleData()">Usar datos de ejemplo</button>
+    </div>
   </div>
+  
+<style>
+  .error-container {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .error-message {
+    color: #b91c1c;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  
+  .error-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+  
+  .retry-button, .sample-button {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+  }
+  
+  .retry-button {
+    background-color: #4f46e5;
+    color: white;
+  }
+  
+  .retry-button:hover {
+    background-color: #4338ca;
+  }
+  
+  .sample-button {
+    background-color: #e5e7eb;
+    color: #374151;
+  }
+  
+  .sample-button:hover {
+    background-color: #d1d5db;
+  }
+</style>
   
   <!-- Resources list -->
   <div *ngIf="!isLoading && !error" class="resources-grid">

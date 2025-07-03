@@ -29,6 +29,8 @@ export class ResourceListComponent implements OnInit {
 
   loadResources(): void {
     this.isLoading = true;
+    this.error = null;
+    
     this.resourceService.getResources().subscribe({
       next: (data) => {
         this.resources = data.resources;
@@ -38,10 +40,16 @@ export class ResourceListComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error fetching resources:', error);
-        this.error = 'Failed to load resources. Please try again later.';
+        this.error = 'No se pudieron cargar los recursos de la API. Por favor, intente nuevamente más tarde.';
         this.isLoading = false;
       }
     });
+  }
+  
+  loadSampleData(): void {
+    // Llamar al método del servicio para usar datos de ejemplo
+    this.resourceService.toggleSampleData(true);
+    this.loadResources();
   }
 
   extractCategories(): void {
