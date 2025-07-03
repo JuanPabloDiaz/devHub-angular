@@ -1,30 +1,120 @@
-<div class="bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300 overflow-hidden h-full flex flex-col cursor-pointer" (click)="openResourceUrl()">
-  <div class="p-6 flex flex-col flex-grow">
-    <div class="flex justify-between items-start mb-3">
-      <h3 class="text-xl font-bold text-gray-900 truncate">{{ resource.name }}</h3>
+<div class="resource-card" (click)="openResourceUrl()">
+  <div class="card-body">
+    <div class="card-header">
+      <h3 class="card-title">{{ resource.name }}</h3>
     </div>
     
-    <p class="text-gray-600 text-sm mb-4 flex-grow line-clamp-3">{{ resource.description }}</p>
+    <p class="card-description">{{ resource.description }}</p>
     
     <!-- Categories -->
-    <div class="mt-auto">
-      <div class="flex flex-wrap gap-2">
-        <span 
-          *ngFor="let category of resource.categories" 
-          class="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full"
-        >
-          {{ category }}
-        </span>
-      </div>
+    <div class="card-categories">
+      <span 
+        *ngFor="let category of resource.categories" 
+        class="category-tag"
+      >
+        {{ category }}
+      </span>
     </div>
   </div>
   
-  <div class="px-6 py-3 bg-gray-50 border-t border-gray-100">
-    <div class="flex items-center justify-between">
-      <span class="text-sm text-gray-500 truncate">{{ resource.url | slice:0:30 }}{{ resource.url.length > 30 ? '...' : '' }}</span>
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <div class="card-footer">
+    <div class="url-container">
+      <span class="url-text">{{ resource.url | slice:0:30 }}{{ resource.url.length > 30 ? '...' : '' }}</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="external-icon" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
       </svg>
     </div>
   </div>
 </div>
+
+<style>
+  .resource-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  
+  .resource-card:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  .card-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .card-header {
+    margin-bottom: 0.75rem;
+  }
+  
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #111827;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+  }
+  
+  .card-description {
+    color: #4b5563;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.5;
+  }
+  
+  .card-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+  }
+  
+  .category-tag {
+    padding: 0.25rem 0.5rem;
+    background-color: #eff6ff;
+    color: #3b82f6;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 9999px;
+  }
+  
+  .card-footer {
+    padding: 0.75rem 1.25rem;
+    background-color: #f9fafb;
+    border-top: 1px solid #f3f4f6;
+  }
+  
+  .url-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .url-text {
+    font-size: 0.75rem;
+    color: #6b7280;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .external-icon {
+    color: #9ca3af;
+  }
+</style>
