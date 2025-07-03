@@ -1,4 +1,4 @@
-<div class="resource-card" (click)="openResourceUrl()">
+<article class="resource-card" role="article">
   <div class="card-body">
     <div class="card-header">
       <h3 class="card-title">{{ resource.name }}</h3>
@@ -7,10 +7,11 @@
     <p class="card-description">{{ resource.description }}</p>
     
     <!-- Categories -->
-    <div class="card-categories">
+    <div class="card-categories" role="list" aria-label="Resource categories">
       <span 
         *ngFor="let category of resource.categories" 
         class="category-tag"
+        role="listitem"
       >
         {{ category }}
       </span>
@@ -19,13 +20,21 @@
   
   <div class="card-footer">
     <div class="url-container">
-      <span class="url-text">{{ resource.url | slice:0:30 }}{{ resource.url.length > 30 ? '...' : '' }}</span>
-      <svg xmlns="http://www.w3.org/2000/svg" class="external-icon" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-      </svg>
+      <a 
+        [href]="resource.url" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="resource-link"
+        [attr.aria-label]="'Visit ' + resource.name + ' at ' + resource.url"
+      >
+        <span class="url-text">{{ resource.url | slice:0:30 }}{{ resource.url.length > 30 ? '...' : '' }}</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="external-icon" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </a>
     </div>
   </div>
-</div>
+</article>
 
 <style>
   .resource-card {
@@ -67,12 +76,13 @@
   }
   
   .card-description {
-    color: #4b5563;
+    color: #374151;
     font-size: 0.875rem;
     margin-bottom: 1rem;
     flex-grow: 1;
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     line-height: 1.5;
@@ -106,6 +116,34 @@
     justify-content: space-between;
   }
   
+  .resource-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+  }
+  
+  .resource-link:hover {
+    color: #2563eb;
+  }
+  
+  .resource-link:hover .url-text {
+    color: #2563eb;
+  }
+  
+  .resource-link:hover .external-icon {
+    color: #2563eb;
+  }
+  
+  .resource-link:focus {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  
   .url-text {
     font-size: 0.75rem;
     color: #6b7280;
@@ -116,5 +154,7 @@
   
   .external-icon {
     color: #9ca3af;
+    margin-left: 0.5rem;
+    flex-shrink: 0;
   }
 </style>

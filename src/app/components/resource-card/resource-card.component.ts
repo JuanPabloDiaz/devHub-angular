@@ -11,10 +11,4 @@ import { Resource } from '../../models/resource.model';
 })
 export class ResourceCardComponent {
   @Input() resource!: Resource;
-  
-  openResourceUrl(): void {
-    if (this.resource.url) {
-      window.open(this.resource.url, '_blank');
-    }
-  }
 }
