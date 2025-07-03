@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, catchError } from 'rxjs';
 import { ResourcesResponse, Resource } from '../models/resource.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ResourceService {
-  // Usamos una URL relativa para que pase por el proxy configurado en proxy.conf.json
-  private apiUrl = '/api/resources/';
+  // Use environment-specific API URL
+  private apiUrl = `${environment.apiUrl}/resources/`;
   private useSampleData = false; // Esta variable controla si se usan datos de ejemplo o no
 
   constructor(private http: HttpClient) { }
@@ -20,10 +21,17 @@ export class ResourceService {
       return of(this.getSampleData());
     }
     
-    // Sin headers para evitar problemas de CORS
+    console.log('Attempting to fetch data from:', this.apiUrl);
+    
     return this.http.get<ResourcesResponse>(this.apiUrl).pipe(
       catchError(error => {
-        console.error('API Error:', error);
+        console.error('API Error details:', {
+          message: error.message,
+          status: error.status,
+          statusText: error.statusText,
+          url: error.url,
+          error: error
+        });
         console.log('Usando datos de ejemplo debido a un error de conexión con la API');
         return of(this.getSampleData());
       })
